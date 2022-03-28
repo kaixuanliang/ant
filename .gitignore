@@ -1,0 +1,6 @@
+# Project exclude paths
+/ant-common/ant-common-entity/target/
+/ant-common/ant-common-mybatis/target/
+/ant-gateway/target/
+/ant-service/ant-service-blog/target/
+/ant-web/ant-web-front/target/
