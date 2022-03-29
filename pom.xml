@@ -28,6 +28,8 @@
         <spring.boot.version>2.6.3</spring.boot.version>
         <lombok.version>1.18.22</lombok.version>
         <fastjson.version>1.2.79</fastjson.version>
+        <sleuth.version>3.1.1</sleuth.version>
+        <zipkin.version>2.2.8.RELEASE</zipkin.version>
     </properties>
 
 
@@ -69,6 +71,20 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
+
+        <!--链路追踪 Sleuth-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>${sleuth.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <version>${zipkin.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
