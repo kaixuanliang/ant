@@ -40,14 +40,18 @@ public class GatewayConfiguration {
         this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
         this.serverCodecConfigurer = serverCodecConfigurer;
     }
-    // 初始化一个限流的过滤器
+    /**
+     * 初始化一个限流的过滤器
+      */
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public GlobalFilter sentinelGatewayFilter() {
         return new SentinelGatewayFilter();
     }
 
-    // 配置初始化的限流参数
+    /**
+     * 配置初始化的限流参数
+     */
     @PostConstruct
     public void initGatewayRules() {
         Set<GatewayFlowRule> rules = new HashSet<GatewayFlowRule>();
@@ -60,14 +64,21 @@ public class GatewayConfiguration {
         );
         GatewayRuleManager.loadRules(rules);
     }
-    // 配置限流的异常处理器
+
+    /**
+     * 配置限流的异常处理器
+     * @return
+     */
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
         return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
     }
 
-    // 自定义限流异常页面
+
+    /**
+     * 自定义限流异常页面
+     */
     @PostConstruct
     public void initBlockHandlers() {
         BlockRequestHandler blockRequestHandler = new BlockRequestHandler() {
